@@ -14,10 +14,12 @@
             android:id="@+id/usernameRegister"
             android:paddingLeft="16dp"
 
-            android:background="@drawable/rounded_register_login" android:layout_marginStart="32dp" app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/rounded_register_login" android:layout_marginStart="32dp"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="32dp" android:layout_marginEnd="32dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginRight="32dp" android:layout_marginTop="32dp" app:layout_constraintTop_toTopOf="parent"
-            android:hint="Username"/>
+            android:layout_marginRight="32dp" android:layout_marginTop="44dp"
+            android:hint="Username" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/registerImage"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -50,7 +52,7 @@
             app:layout_constraintEnd_toEndOf="@+id/passwordRegister"
             app:layout_constraintStart_toStartOf="@+id/passwordRegister" android:layout_marginTop="28dp"
             app:layout_constraintTop_toBottomOf="@+id/passwordRegister" app:layout_constraintHorizontal_bias="0.498"
-            android:id="@+id/button"/>
+            android:id="@+id/buttonRegister"/>
     <TextView
             android:text="Already have an account?"
             android:textColor="@android:color/white"
@@ -59,7 +61,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/goToLoginActivity"
-            app:layout_constraintTop_toTopOf="@+id/button"
-            app:layout_constraintStart_toStartOf="@+id/button" app:layout_constraintEnd_toEndOf="@+id/button"
+            app:layout_constraintTop_toTopOf="@+id/buttonRegister"
+            app:layout_constraintStart_toStartOf="@+id/buttonRegister" app:layout_constraintEnd_toEndOf="@+id/buttonRegister"
             android:layout_marginTop="80dp" app:layout_constraintHorizontal_bias="0.496"/>
+    <Button
+            android:text="Select Image"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@drawable/rounded_select_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp" tools:layout_editor_absoluteY="47dp"
+            android:id="@+id/registerImage" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+    />
 </android.support.constraint.ConstraintLayout>
