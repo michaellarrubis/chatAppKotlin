@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -100,9 +100,16 @@ class RegisterActivity : AppCompatActivity() {
 
         ref.setValue(user)
             .addOnSuccessListener {
-                Toast.makeText( this, "New user created", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, LatestMessageActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+            }
+            .addOnFailureListener{
+                Toast.makeText( this, it.message, Toast.LENGTH_SHORT).show()
             }
     }
 }
 
-class User(val uid: String, val username: String, val profileImageUrl: String)
+class User(val uid: String, val username: String, val profileImageUrl: String) {
+    constructor(): this("", "", "")
+}
