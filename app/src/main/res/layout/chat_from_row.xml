@@ -10,7 +10,7 @@
     <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp" app:srcCompat="@android:drawable/btn_star_big_on"
-            android:id="@+id/imageChatToRow" android:layout_marginTop="8dp"
+            android:id="@+id/imageChatFromRow" android:layout_marginTop="8dp"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="8dp"/>
     <TextView
@@ -20,7 +20,7 @@
             android:background="@drawable/rounded_register_login"
             android:padding="16dp"
             android:maxWidth="240dp"
-            android:id="@+id/textChatToRow" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageChatToRow" android:layout_marginLeft="8dp"
+            android:id="@+id/textChatFromRow" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageChatFromRow" android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp" android:layout_marginTop="8dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
