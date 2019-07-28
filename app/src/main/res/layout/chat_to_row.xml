@@ -6,7 +6,9 @@
         android:layout_marginBottom="12dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+            app:civ_border_width="2dp"
+            app:civ_border_color="@android:color/white"
             android:layout_width="50dp"
             android:layout_height="50dp" app:srcCompat="@android:drawable/btn_star_big_on"
             android:id="@+id/imageChatToRow" android:layout_marginTop="8dp"
