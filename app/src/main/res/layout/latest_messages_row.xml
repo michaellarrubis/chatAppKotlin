@@ -5,7 +5,9 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="120dp">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
+            app:civ_border_width="2dp"
+            app:civ_border_color="@android:color/holo_green_dark"
             android:layout_width="64dp"
             android:layout_height="64dp" app:srcCompat="@android:drawable/btn_star_big_on"
             android:id="@+id/imageLatestMessage" android:layout_marginTop="8dp"
@@ -13,7 +15,7 @@
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="24dp" android:layout_marginStart="24dp"/>
     <TextView
-            android:text="Username"
+            tools:text="Username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/usernameLatestMessage" app:layout_constraintStart_toEndOf="@+id/imageLatestMessage"
@@ -22,7 +24,7 @@
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.329"
             android:textStyle="bold" android:textColor="#000000"/>
     <TextView
-            android:text="LatestMessage"
+            tools:text="LatestMessage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/contentLatestMessage"
