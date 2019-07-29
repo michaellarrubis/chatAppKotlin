@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.testchatapp.R
 import com.example.testchatapp.messages.NewMessageActivity.Companion.USER_KEY
 import com.example.testchatapp.models.ChatMessage
 import com.example.testchatapp.models.User
+import com.example.testchatapp.registerLogin.LoginActivity
 import com.example.testchatapp.registerLogin.RegisterActivity
 import com.example.testchatapp.views.LatestMessageRow
 import com.google.firebase.auth.FirebaseAuth
@@ -115,7 +117,10 @@ class LatestMessageActivity : AppCompatActivity() {
             }
             R.id.menuSignOut -> {
                 FirebaseAuth.getInstance().signOut()
-                returnToRegisterActivity()
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                Toast.makeText( this, "Nakagawas Naka! Sulod nasad Balik!", Toast.LENGTH_SHORT).show()
             }
         }
         return super.onOptionsItemSelected(item)

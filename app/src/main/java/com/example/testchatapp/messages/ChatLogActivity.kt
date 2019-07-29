@@ -43,7 +43,6 @@ class ChatLogActivity : AppCompatActivity() {
         listenForMessages()
 
         buttonSendChatLogMessage.setOnClickListener{
-            Log.d(TAG, "Attempting to Send Message")
             performSendMessage()
         }
     }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import com.example.testchatapp.R
 import com.example.testchatapp.models.User
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -23,7 +24,7 @@ class NewMessageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_message)
 
-        supportActionBar?.title = "Select User"
+        supportActionBar?.title = "ESTORYA-E SILA"
 
         fetchUsers()
     }
@@ -38,24 +39,22 @@ class NewMessageActivity : AppCompatActivity() {
 
             override fun onDataChange(p0: DataSnapshot) {
                 val adapter = GroupAdapter<ViewHolder>()
+                val uid = FirebaseAuth.getInstance().uid
 
                 p0.children.forEach{
-                    Log.d("NewMessage", it.toString())
                     val user = it.getValue(User::class.java)
+
                     if (user != null) {
-                        adapter.add(UserItem(user))
+                        if (user!!.uid != uid) {
+                            adapter.add(UserItem(user))
+                        }
                     }
                 }
 
                 adapter.setOnItemClickListener { item, view ->
-
                     val userItem = item as UserItem
-
                     val intent = Intent(view.context, ChatLogActivity::class.java)
 
-                    //Passing Username to Chat Log Activity
-                    //intent.putExtra(USER_KEY, userItem.user.username)
-                    //Passing whole User Obj to Chat Log Activity
                     intent.putExtra(USER_KEY, userItem.user)
                     startActivity(intent)
 

@@ -28,8 +28,6 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         goToLoginActivity.setOnClickListener {
-            Log.d("alreadyHaveAccount", "Try to check Activity")
-
             // Launch the login activity
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
@@ -48,8 +46,6 @@ class RegisterActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null) {
-            Log.d("registerImageActivity", "Photo was Selected")
-
             selectedPhotoUri = data.data
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
             registerImageView.setImageBitmap(bitmap)
@@ -62,9 +58,12 @@ class RegisterActivity : AppCompatActivity() {
         val password = passwordRegister.text.toString()
 
         if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText( this, "Email is Required!", Toast.LENGTH_SHORT).show()
+            Toast.makeText( this, "Kinahanglanon jud ang Email og Password!", Toast.LENGTH_SHORT).show()
             return
         }
+
+        buttonRegister.text = "Paghuwat Sa Ha..."
+        buttonRegister.isClickable = false
 
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
@@ -105,8 +104,11 @@ class RegisterActivity : AppCompatActivity() {
                 val intent = Intent(this, LatestMessageActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
+                Toast.makeText( this, "Paglipay kay nakasulod naka!", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{
+                buttonRegister.text = "Buhata na"
+                buttonRegister.isClickable = true
                 Toast.makeText( this, it.message, Toast.LENGTH_SHORT).show()
             }
     }
